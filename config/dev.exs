@@ -3,10 +3,11 @@ config :ash, policies: [show_policy_breakdowns?: true]
 
 # Configure your database
 config :tunez, Tunez.Repo,
-  username: "postgres",
-  password: "postgres",
-  hostname: "localhost",
-  database: "tunez_dev",
+  username: System.get_env("SUPACLOUD_DB_USER"),
+  password: System.get_env("SUPACLOUD_DB_PASSWORD"),
+  hostname: System.get_env("SUPACLOUD_DB_HOST_CARG"),
+  port: 6543,
+  database: "postgres",
   stacktrace: true,
   show_sensitive_data_on_connection_error: true,
   pool_size: 10
